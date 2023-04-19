@@ -7,6 +7,8 @@ fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=$
     const openingHours = data.candidates[0].opening_hours;
     const isOpenNow = openingHours && openingHours.open_now;
 
-    const heading = document.querySelector('h1');
-    heading.textContent = isOpenNow ? 'Open' : 'Closed';
+    const card = document.querySelector('.card');
+    const status = card.querySelector('.status');
+    status.textContent = isOpenNow ? 'Open' : 'Closed';
+    status.classList.add(isOpenNow ? 'open' : 'closed');
   });
